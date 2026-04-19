@@ -1,0 +1,80 @@
+name: Deploy Preview (Vercel)
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: vercel-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  deploy:
+    name: Deploy preview to Vercel
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check Vercel secrets
+        id: check
+        run: |
+          if [ -z "${{ secrets.VERCEL_TOKEN }}" ] || [ -z "${{ secrets.VERCEL_ORG_ID }}" ] || [ -z "${{ secrets.VERCEL_PROJECT_ID }}" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Vercel secrets not configured. See docs/DEPLOYMENT.md. Skipping preview deploy."
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install Vercel CLI
+        if: steps.check.outputs.ready == 'true'
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel environment (preview)
+        if: steps.check.outputs.ready == 'true'
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build project artifacts
+        if: steps.check.outputs.ready == 'true'
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy preview to Vercel
+        if: steps.check.outputs.ready == 'true'
+        id: deploy
+        run: |
+          url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Preview URL: $url"
+
+      - name: Comment preview URL on PR
+        if: steps.check.outputs.ready == 'true' && github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: vercel-preview
+          message: |
+            ### Vercel Preview Deployment
+
+            | Name | Status | Preview |
+            |------|--------|---------|
+            | `${{ github.event.repository.name }}` | Ready | ${{ steps.deploy.outputs.url }} |
+
+            Commit: `${{ github.event.pull_request.head.sha }}`

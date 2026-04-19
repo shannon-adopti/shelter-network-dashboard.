@@ -1,0 +1,100 @@
+name: CI
+
+on:
+  push:
+    branches-ignore:
+      - 'dependabot/**'
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Lint, Typecheck, Test, Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect package manager
+        id: pm
+        run: |
+          if [ -f pnpm-lock.yaml ]; then
+            echo "manager=pnpm" >> "$GITHUB_OUTPUT"
+            echo "install=pnpm install --frozen-lockfile" >> "$GITHUB_OUTPUT"
+            echo "run=pnpm" >> "$GITHUB_OUTPUT"
+          elif [ -f yarn.lock ]; then
+            echo "manager=yarn" >> "$GITHUB_OUTPUT"
+            echo "install=yarn install --frozen-lockfile" >> "$GITHUB_OUTPUT"
+            echo "run=yarn" >> "$GITHUB_OUTPUT"
+          elif [ -f package-lock.json ]; then
+            echo "manager=npm" >> "$GITHUB_OUTPUT"
+            echo "install=npm ci" >> "$GITHUB_OUTPUT"
+            echo "run=npm run" >> "$GITHUB_OUTPUT"
+          else
+            echo "manager=none" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup pnpm
+        if: steps.pm.outputs.manager == 'pnpm'
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        if: steps.pm.outputs.manager != 'none'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: ${{ steps.pm.outputs.manager }}
+
+      - name: Skip (no package.json)
+        if: steps.pm.outputs.manager == 'none'
+        run: echo "No package.json found — skipping JS checks."
+
+      - name: Install dependencies
+        if: steps.pm.outputs.manager != 'none'
+        run: ${{ steps.pm.outputs.install }}
+
+      - name: Lint
+        if: steps.pm.outputs.manager != 'none'
+        run: |
+          if node -e "process.exit(require('./package.json').scripts?.lint ? 0 : 1)"; then
+            ${{ steps.pm.outputs.run }} lint
+          else
+            echo "No lint script — skipping."
+          fi
+
+      - name: Typecheck
+        if: steps.pm.outputs.manager != 'none'
+        run: |
+          if node -e "process.exit(require('./package.json').scripts?.typecheck ? 0 : 1)"; then
+            ${{ steps.pm.outputs.run }} typecheck
+          elif [ -f tsconfig.json ]; then
+            npx --yes tsc --noEmit
+          else
+            echo "No typecheck script and no tsconfig.json — skipping."
+          fi
+
+      - name: Test
+        if: steps.pm.outputs.manager != 'none'
+        run: |
+          if node -e "process.exit(require('./package.json').scripts?.test ? 0 : 1)"; then
+            ${{ steps.pm.outputs.run }} test -- --run 2>/dev/null || ${{ steps.pm.outputs.run }} test
+          else
+            echo "No test script — skipping."
+          fi
+
+      - name: Build
+        if: steps.pm.outputs.manager != 'none'
+        run: |
+          if node -e "process.exit(require('./package.json').scripts?.build ? 0 : 1)"; then
+            ${{ steps.pm.outputs.run }} build
+          else
+            echo "No build script — skipping."
+          fi
