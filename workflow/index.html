@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Adopti Workflow: the placement execution state machine and orchestration layer working end-to-end." />
+    <title>Workflow · Adopti</title>
+    <link rel="preload" href="/assets/img-5006-architecture-reference.svg" as="image" />
+    <link rel="preload" href="/assets/img-5007-transaction-reference.svg" as="image" />
+    <link rel="stylesheet" href="/workflow/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="move-header" aria-labelledby="workflow-title">
+        <p class="eyebrow">PLACEMENT EXECUTION STATE MACHINE · PEX — CLAIM 25 ANCHOR</p>
+        <h1 id="workflow-title">Workflow</h1>
+        <p class="caption">Every subject flows through the same six-state machine. Triggers, conditions, loops, and settlement events — auditable end-to-end.</p>
+      </header>
+
+      <section class="hero-grid" aria-labelledby="hero-statement">
+        <div>
+          <p class="kicker">Orchestration above systems of record</p>
+          <h2 id="hero-statement">A subject moves across organizations. Most welfare systems lose them. Adopti is the layer that doesn't.</h2>
+          <p class="hero-subhead">Six integrated inventions — persistent identity, dual-score routing, outcome-verified settlement, custody-weighted reconciliation, voice diversion, and a placement execution state machine — operating as one orchestration layer above existing systems of record.</p>
+        </div>
+        <figure class="layer-figure" aria-label="Six-layer Adopti architecture">
+          <svg viewBox="0 0 640 520" role="img" aria-labelledby="layers-title">
+            <title id="layers-title">Adopti six-layer architecture</title>
+            <g class="layers">
+              <rect x="72" y="38" width="496" height="58" rx="16"/><text x="106" y="75"><tspan>L5</tspan> — Compliance &amp; Transparency</text>
+              <rect x="72" y="108" width="496" height="58" rx="16"/><text x="106" y="145"><tspan>L4</tspan> — Settlement (OVESS)</text>
+              <rect x="72" y="178" width="496" height="58" rx="16"/><text x="106" y="215"><tspan>L3</tspan> — Transport (PEX)</text>
+              <rect x="72" y="248" width="496" height="58" rx="16"/><text x="106" y="285"><tspan>L2</tspan> — Routing (DSRE + TMRRE)</text>
+              <rect x="72" y="318" width="496" height="58" rx="16"/><text x="106" y="355"><tspan>L1</tspan> — Identity (PCSIA + PVDTS)</text>
+              <rect x="72" y="388" width="496" height="58" rx="16"/><text x="106" y="425"><tspan>L0</tspan> — Automation Bridge (Shadow-Mode RPA)</text>
+            </g>
+            <line x1="82" x2="558" y1="464" y2="464" />
+            <text class="existing" x="96" y="492">[Existing systems below L0, not replaced] Shelterluv · PetPoint · Chameleon · 24PetWatch</text>
+          </svg>
+        </figure>
+      </section>
+
+      <section class="feature-section" aria-labelledby="architecture-title">
+        <div class="section-copy">
+          <p class="kicker">Section 2</p>
+          <h2 id="architecture-title">The Architecture</h2>
+          <p>Adopti reads above existing shelter management systems through per-system browser automation adapters operating in shadow mode by default — no replacement, no integration cost, no risk to your system of record.</p>
+        </div>
+        <figure class="annotated-media architecture-media">
+          <img src="/assets/img-5006-architecture-reference.svg" alt="Shadow-mode browser automation architecture detail" />
+          <figcaption>Architecture reference · L0 Automation Bridge · Adopti, Inc.</figcaption>
+          <article class="callout c1"><span>1</span><h3>Your system of record stays.</h3><p>Adopti reads from Shelterluv, PetPoint, Chameleon, or any browser-accessible shelter platform. We do not replace it. We do not require an API.</p></article>
+          <article class="callout c2"><span>2</span><h3>Read-only by default.</h3><p>Shadow mode is the factory setting. Write-back to your system requires an explicit administrator authorization workflow — four steps, fully logged, revocable at any time.</p></article>
+          <article class="callout c3"><span>3</span><h3>Not general-purpose RPA.</h3><p>UiPath and similar tools have no shelter-specific adapters, no shadow-mode default, and no per-system module architecture. Adopti's adapters are purpose-built for welfare systems and patented.</p></article>
+        </figure>
+        <section class="comparison" aria-labelledby="rpa-title">
+          <h3 id="rpa-title">Why not general-purpose RPA?</h3>
+          <div class="comparison-grid">
+            <div class="prior"><h4>General-purpose RPA<br /><span>(UiPath, Automation Anywhere)</span></h4><ul><li>No shelter-specific adapters</li><li>No shadow-mode default</li><li>No per-system modules</li><li>Generic data extraction</li></ul></div>
+            <div class="adopti"><h4>Adopti PCSIA (Claim 21)</h4><ul><li>Per-system adapter modules (Shelterluv, PetPoint, Chameleon, 24PetWatch)</li><li>Shadow-mode read-only by default</li><li>Administrator-gated write-back authorization</li></ul><p>USPTO 64/045,063 · PCSIA Claim 21 anchor</p></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="feature-section" aria-labelledby="journey-title">
+        <div class="section-copy">
+          <p class="kicker">Section 3</p>
+          <h2 id="journey-title">A Subject's Journey</h2>
+          <p>One animal moving from intake to verified outcome — and every system around them keeping continuity. Each step writes a timestamped, hash-chained event that downstream layers consume.</p>
+        </div>
+        <figure class="annotated-media journey-media">
+          <img src="/assets/img-5007-transaction-reference.svg" alt="End-to-end transaction sequence diagram" />
+          <figcaption>Transaction reference · T0 Intake → T6 Settlement · Adopti, Inc.</figcaption>
+          <article class="callout j1"><span>1</span><h3>Identity is the first event.</h3><p>Before anything else happens, the subject is anchored to a Persistent Identity Record. Every downstream event keys to this one record — across every organization that touches the subject.</p></article>
+          <article class="callout j2"><span>2</span><h3>Custody is the anchor moment.</h3><p>The patent's chain-of-custody claim activates here. GPS coordinates plus biometric scan confirmation must both verify before the state machine advances.</p></article>
+          <article class="callout j3"><span>3</span><h3>The 90 days are visible.</h3><p>OVESS Claim 23 requires three conditions — no return, health certification, government registration — to simultaneously verify at Day 90.</p></article>
+          <article class="callout j4"><span>4</span><h3>Settlement teaches routing.</h3><p>Every verified outcome feeds back as a probability weight to the routing engine. Partners with higher Day-90 stability rise in future rankings.</p></article>
+        </figure>
+        <section class="comparison" aria-labelledby="shelter-title">
+          <h3 id="shelter-title">Why not existing shelter management software?</h3>
+          <div class="comparison-grid">
+            <div class="prior"><h4>Shelterluv / PetPoint / Chameleon</h4><ul><li>Single-organization scope</li><li>Static intake triage</li><li>Placement fee on adoption only</li><li>No execution state machine</li></ul></div>
+            <div class="adopti"><h4>Adopti Orchestration Layer</h4><ul><li>Cross-organization continuity (PCSIA Claim 21)</li><li>Temporal trajectory routing (DSRE Claim 22)</li><li>Outcome-verified escrow at Day 90 (OVESS Claim 23)</li><li>Six-state PEX with verified handoffs (PEX Claim 25)</li></ul><p>USPTO 64/045,063 · 25 claims · 6 families</p></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="run-section" aria-labelledby="run-history-title">
+        <div class="section-copy">
+          <p class="kicker">Section 4</p>
+          <h2 id="run-history-title">Run History</h2>
+          <p>Five anonymized sample runs from pilot precursor data. Each card shows a subject moving through the six-state machine and the resulting settlement outcome.</p>
+        </div>
+        <div id="run-history" class="run-history" aria-label="Anonymized workflow run history"></div>
+      </section>
+
+      <section class="claim-section" aria-labelledby="claims-title">
+        <div class="section-copy">
+          <p class="kicker">Section 5</p>
+          <h2 id="claims-title">Six Integrated Inventions</h2>
+          <p>Each family below corresponds to one or more product pages. Click through for the working interface.</p>
+        </div>
+        <div class="claim-grid">
+          <a href="/identity" class="claim-card"><strong>PCSIA</strong><h3>Persistent Cross-System Subject Identity Architecture</h3><p>One verified record per subject, aggregated across every organization that touches them.</p><small>USPTO 64/045,063 · Claim 21 anchor</small><span>→ Identity · LostFound · AnimalRecord · PaperToDigital · ShadowBridge</span></a>
+          <a href="/routing" class="claim-card"><strong>DSRE</strong><h3>Dual-Score Routing Engine</h3><p>Routing that learns. Compatibility score plus temporal trajectory — decisions get better as outcomes settle.</p><small>USPTO 64/045,063 · Claim 22 anchor</small><span>→ SmartIntake · Routing</span></a>
+          <a href="/settlement" class="claim-card"><strong>OVESS</strong><h3>Outcome-Verified Escrow Settlement System</h3><p>Settlement only after verified Day-90 stability. The system never holds funds.</p><small>USPTO 64/045,063 · Claim 23 anchor</small><span>→ Settlement · Outcomes</span></a>
+          <a href="#journey-title" class="claim-card"><strong>TMRRE</strong><h3>Temporal Multi-Record Reconciliation Engine</h3><p>Conflicting records reconciled by custody-period multiplier — physical custody is a provenance signal.</p><small>USPTO 64/045,063 · Claim 24 anchor</small><span>→ Cross-cutting, no dedicated page</span></a>
+          <a href="/diversion" class="claim-card"><strong>PVDTS</strong><h3>Pre-Intake Voice Diversion Triage System</h3><p>Intercept surrender calls before physical intake. The save happens before the clock starts.</p><small>USPTO 64/045,063 · Claims 16–18</small><span>→ Diversion · Intake</span></a>
+          <a href="/walkthrough" class="claim-card"><strong>PEX</strong><h3>Placement Execution State Machine</h3><p>Six-state deterministic handoff between routing and settlement. Every transition timestamped, every exception re-routes.</p><small>USPTO 64/045,063 · Claim 25 anchor</small><span>→ Walkthrough · Packet · TransportLive · Holds · Exceptions</span></a>
+        </div>
+      </section>
+
+      <footer class="compliance-footer">
+        <p>AB 631-native · Chain-of-custody verified · Audit-ready exports · Read-only regulator review</p>
+        <p>USPTO Provisional Application 64/045,063 · Filed April 21, 2026</p>
+        <p>Twenty-five claims across six invention families · Five continuation anchors filed</p>
+        <p>Inventor: Shannon Swindell · Assignee: Adopti, Inc. (Delaware C-Corp)</p>
+        <p>Verifiable at <a href="https://patentcenter.uspto.gov/applications/64045063">patentcenter.uspto.gov/applications/64045063</a></p>
+      </footer>
+    </main>
+    <script type="module" src="/workflow/workflow.js"></script>
+  </body>
+</html>

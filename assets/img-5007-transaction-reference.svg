@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1060" role="img" aria-labelledby="title desc">
+  <title id="title">End-to-End Transaction Sequence Diagram</title>
+  <desc id="desc">A subject's journey from intake through routing, physical transfer, observation, and settlement.</desc>
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fcfbf8"/><stop offset="1" stop-color="#eff7f3"/></linearGradient>
+    <filter id="shadow2"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#152622" flood-opacity="0.14"/></filter>
+    <style>.h{font:800 32px Inter,Arial,sans-serif;fill:#16342f}.sub{font:600 20px Inter,Arial,sans-serif;fill:#62766f}.col{fill:#fff;stroke:#c7d9d2;stroke-width:3;rx:24}.band{fill:#e0f3ec;stroke:#2f9a78;stroke-width:5;rx:18}.settle{fill:#173d35;stroke:#49c391;stroke-width:4;rx:20}.settleText{font:700 22px Inter,Arial,sans-serif;fill:#fff}.label{font:700 23px Inter,Arial,sans-serif;fill:#183a34}.small{font:500 18px Inter,Arial,sans-serif;fill:#53665f}.line{stroke:#617b73;stroke-width:4;fill:none;marker-end:url(#arrow2)}.dash{stroke:#96aaa2;stroke-width:3;stroke-dasharray:8 10;fill:none}</style>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#617b73"/></marker>
+  </defs>
+  <rect width="1800" height="1060" fill="url(#bg2)"/>
+  <text x="72" y="78" class="h">End-to-End Transaction Sequence Diagram</text>
+  <text x="72" y="113" class="sub">Adopti, Inc. — Transaction Reference · T0 Intake → T6 Settlement</text>
+  <g filter="url(#shadow2)">
+    <rect x="70" y="175" width="225" height="675" class="col"/><text x="104" y="230" class="label">T0 Intake</text><text x="104" y="282" class="small">PIR database</text><text x="104" y="310" class="small">creates/updates</text><text x="104" y="345" class="small">identity record</text>
+    <rect x="330" y="175" width="225" height="675" class="col"/><text x="364" y="230" class="label">T1 Match</text><text x="364" y="282" class="small">DSRE scores</text><text x="364" y="310" class="small">compatibility +</text><text x="364" y="338" class="small">trajectory</text>
+    <rect x="590" y="175" width="225" height="675" class="col"/><text x="624" y="230" class="label">T2 Commit</text><text x="624" y="282" class="small">Partner accepts</text><text x="624" y="310" class="small">placement terms</text>
+    <rect x="850" y="175" width="225" height="675" class="col"/><text x="884" y="230" class="label">T3 Transfer</text><text x="884" y="282" class="small">Physical handoff</text><text x="884" y="310" class="small">GPS + biometric</text><text x="884" y="338" class="small">confirmation</text>
+    <rect x="1110" y="175" width="225" height="675" class="col"/><text x="1144" y="230" class="label">T4 Observe</text><text x="1144" y="282" class="small">Day 3, 7, 14,</text><text x="1144" y="310" class="small">30, 60, 90</text><text x="1144" y="338" class="small">check-ins</text>
+    <rect x="1370" y="175" width="225" height="675" class="col"/><text x="1404" y="230" class="label">T6 Settle</text><text x="1404" y="282" class="small">3-condition</text><text x="1404" y="310" class="small">AND gate</text><text x="1404" y="338" class="small">updates routing</text>
+    <rect x="835" y="455" width="780" height="88" class="band"/><text x="875" y="508" class="label">632 · Chain-of-custody verified physical transfer</text>
+    <path d="M1218 370v300" class="dash"/><text x="1150" y="710" class="small">90-day observation window visible in timeline</text>
+    <rect x="1375" y="652" width="330" height="120" class="settle"/><text x="1415" y="700" class="settleText">653 · Update partner</text><text x="1415" y="735" class="settleText">success rate</text>
+  </g>
+  <path d="M295 510h35" class="line"/><path d="M555 510h35" class="line"/><path d="M815 510h35" class="line"/><path d="M1075 510h35" class="line"/><path d="M1335 510h35" class="line"/>
+  <path d="M1540 650c-290 210-850 210-1110 0" class="line"/>
+  <text x="430" y="910" class="sub">Every transition writes a timestamped, hash-chained audit row consumed by downstream layers.</text>
+</svg>

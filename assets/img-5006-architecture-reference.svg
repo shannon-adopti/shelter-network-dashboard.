@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">Shadow-Mode Browser Automation Architecture Detail</title>
+  <desc id="desc">Adopti shadow-mode browser automation adapters reading existing shelter systems of record without replacing them.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbfaf7"/><stop offset="1" stop-color="#eef6f3"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#16211f" flood-opacity="0.16"/></filter>
+    <style>.label{font:700 30px Inter,Arial,sans-serif;fill:#16342f}.small{font:500 21px Inter,Arial,sans-serif;fill:#4d605c}.tiny{font:600 17px Inter,Arial,sans-serif;fill:#71817d}.box{fill:#fff;stroke:#bfd3cc;stroke-width:3;rx:24}.adapter{fill:#e7f4ef;stroke:#3a9d7b;stroke-width:3;rx:22}.novel{fill:#173d35;stroke:#49c391;stroke-width:5;rx:28}.novelText{font:800 30px Inter,Arial,sans-serif;fill:#fff}.line{stroke:#668079;stroke-width:4;fill:none;marker-end:url(#arrow)}</style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#668079"/></marker>
+  </defs>
+  <rect width="1600" height="980" fill="url(#bg)"/>
+  <text x="70" y="75" class="label">Shadow-Mode Browser Automation Architecture</text>
+  <text x="70" y="112" class="small">Adopti, Inc. — Architecture Reference</text>
+  <text x="1235" y="112" class="tiny">L0 Automation Bridge</text>
+
+  <g filter="url(#shadow)">
+    <rect x="80" y="170" width="410" height="170" class="box"/><text x="125" y="230" class="label">Shelterluv UI</text><text x="125" y="278" class="small">Browser-accessible records</text><text x="400" y="314" class="tiny">701</text>
+    <rect x="595" y="170" width="410" height="170" class="box"/><text x="640" y="230" class="label">PetPoint UI</text><text x="640" y="278" class="small">Intake + placement screens</text><text x="915" y="314" class="tiny">702</text>
+    <rect x="1110" y="170" width="410" height="170" class="box"/><text x="1155" y="230" class="label">Chameleon UI</text><text x="1155" y="278" class="small">Municipal shelter workflow</text><text x="1430" y="314" class="tiny">703</text>
+
+    <rect x="115" y="440" width="310" height="130" class="adapter"/><text x="155" y="493" class="label">Adapter</text><text x="155" y="532" class="small">Shelterluv module</text>
+    <rect x="645" y="440" width="310" height="130" class="adapter"/><text x="685" y="493" class="label">Adapter</text><text x="685" y="532" class="small">PetPoint module</text>
+    <rect x="1175" y="440" width="310" height="130" class="adapter"/><text x="1215" y="493" class="label">Adapter</text><text x="1215" y="532" class="small">Chameleon module</text>
+
+    <rect x="540" y="665" width="520" height="180" class="novel"/><text x="605" y="735" class="novelText">Adopti PCSIA (Novel)</text><text x="605" y="780" class="small" fill="#dcefe9">Persistent identity + shadow reads</text><text x="605" y="820" class="tiny" fill="#b8d5cc">775 · Claim 21 anchor</text>
+    <rect x="1100" y="690" width="350" height="105" fill="#fff8e8" stroke="#dba33a" stroke-width="4" rx="20"/><text x="1130" y="735" class="label">Operating Mode</text><text x="1130" y="772" class="small">740 · SHADOW / READ ONLY</text>
+  </g>
+  <path d="M285 340v92" class="line"/><path d="M800 340v92" class="line"/><path d="M1315 340v92" class="line"/>
+  <path d="M270 570c60 88 160 126 270 160" class="line"/><path d="M800 570v90" class="line"/><path d="M1330 570c-70 92-160 128-270 165" class="line"/>
+  <path d="M1060 750h40" class="line"/>
+</svg>
