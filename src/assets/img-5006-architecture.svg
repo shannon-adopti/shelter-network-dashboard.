@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Shadow-Mode Browser Automation Architecture Detail</title>
+  <desc id="desc">Adopti browser automation adapters read across shelter systems in shadow mode and write to persistent identity, routing, transport, settlement, and audit layers.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffaf4"/><stop offset="1" stop-color="#edf7f4"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#1b2b28" flood-opacity=".14"/></filter>
+  </defs>
+  <rect width="1440" height="900" rx="36" fill="url(#bg)"/>
+  <text x="720" y="58" text-anchor="middle" font-family="Inter, Arial" font-size="24" font-weight="700" fill="#132522">Shadow-Mode Browser Automation Architecture Detail</text>
+  <text x="80" y="98" font-family="Inter, Arial" font-size="15" fill="#61716d">Adopti, Inc. — Architecture Reference</text>
+  <text x="1110" y="98" font-family="Inter, Arial" font-size="15" fill="#61716d">Adopti, Inc. — Architecture Reference</text>
+  <g font-family="Inter, Arial" filter="url(#shadow)">
+    <rect x="86" y="138" width="360" height="144" rx="22" fill="#ffffff" stroke="#cddbd7"/>
+    <text x="116" y="180" font-size="22" font-weight="700" fill="#132522">701 Shelterluv UI</text>
+    <text x="116" y="218" font-size="16" fill="#52645f">Browser-accessible system of record</text>
+    <rect x="540" y="138" width="360" height="144" rx="22" fill="#ffffff" stroke="#cddbd7"/>
+    <text x="570" y="180" font-size="22" font-weight="700" fill="#132522">702 PetPoint UI</text>
+    <text x="570" y="218" font-size="16" fill="#52645f">Read without API dependency</text>
+    <rect x="994" y="138" width="360" height="144" rx="22" fill="#ffffff" stroke="#cddbd7"/>
+    <text x="1024" y="180" font-size="22" font-weight="700" fill="#132522">703 Chameleon UI</text>
+    <text x="1024" y="218" font-size="16" fill="#52645f">Legacy workflow preserved</text>
+  </g>
+  <g stroke="#9fb5ae" stroke-width="4" fill="none" stroke-linecap="round"><path d="M266 282v86h454"/><path d="M720 282v86"/><path d="M1174 282v86H720"/></g>
+  <g font-family="Inter, Arial" filter="url(#shadow)">
+    <rect x="280" y="360" width="880" height="156" rx="26" fill="#12342f"/>
+    <text x="330" y="420" font-size="28" font-weight="800" fill="#ffffff">720 Adopti Shadow-Mode RPA Adapter Layer</text>
+    <text x="330" y="462" font-size="18" fill="#c5ddd6">Per-system modules normalize fields, observe events, and leave source systems unchanged.</text>
+    <rect x="970" y="398" width="150" height="72" rx="16" fill="#1f6f60" stroke="#d6fff4" stroke-opacity=".5"/>
+    <text x="1045" y="428" text-anchor="middle" font-size="16" font-weight="800" fill="#ffffff">740 MODE</text>
+    <text x="1045" y="454" text-anchor="middle" font-size="15" fill="#e8fff9">SHADOW</text>
+  </g>
+  <g stroke="#9fb5ae" stroke-width="4" fill="none" stroke-linecap="round"><path d="M720 516v74"/></g>
+  <g font-family="Inter, Arial" filter="url(#shadow)">
+    <rect x="104" y="590" width="286" height="126" rx="22" fill="#ffffff" stroke="#cddbd7"/>
+    <text x="132" y="632" font-size="19" font-weight="800" fill="#132522">PCSIA Identity</text>
+    <text x="132" y="666" font-size="15" fill="#52645f">Persistent subject record</text>
+    <rect x="418" y="590" width="286" height="126" rx="22" fill="#ffffff" stroke="#cddbd7"/>
+    <text x="446" y="632" font-size="19" font-weight="800" fill="#132522">DSRE Routing</text>
+    <text x="446" y="666" font-size="15" fill="#52645f">Dual-score match engine</text>
+    <rect x="736" y="590" width="286" height="126" rx="22" fill="#ffffff" stroke="#cddbd7"/>
+    <text x="764" y="632" font-size="19" font-weight="800" fill="#132522">PEX Transport</text>
+    <text x="764" y="666" font-size="15" fill="#52645f">State-machine handoffs</text>
+    <rect x="1050" y="590" width="286" height="126" rx="22" fill="#ffffff" stroke="#cddbd7"/>
+    <text x="1078" y="632" font-size="19" font-weight="800" fill="#132522">OVESS Settlement</text>
+    <text x="1078" y="666" font-size="15" fill="#52645f">Day-90 verified outcome</text>
+    <rect x="360" y="766" width="720" height="76" rx="20" fill="#f4e8ce" stroke="#d39b2d"/>
+    <text x="720" y="812" text-anchor="middle" font-size="20" font-weight="800" fill="#132522">775 Adopti PCSIA (Novel): shelter-specific, shadow-default, adapter-based</text>
+  </g>
+</svg>
