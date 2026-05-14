@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">End-to-End Transaction Sequence Diagram</title>
+  <desc id="desc">Subject journey from intake through routing, transfer, observation, verification, settlement, and routing feedback.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbfbf7"/><stop offset="1" stop-color="#eef7f5"/></linearGradient></defs>
+  <rect width="1440" height="900" rx="36" fill="url(#bg)"/>
+  <text x="720" y="58" text-anchor="middle" font-family="Inter, Arial" font-size="24" font-weight="800" fill="#132522">End-to-End Transaction Sequence Diagram</text>
+  <text x="80" y="98" font-family="Inter, Arial" font-size="15" fill="#61716d">Adopti, Inc. — Transaction Reference</text>
+  <text x="1110" y="98" font-family="Inter, Arial" font-size="15" fill="#61716d">Adopti, Inc. — Transaction Reference</text>
+  <g font-family="Inter, Arial" font-size="15">
+    <g fill="#ffffff" stroke="#cddbd7"><rect x="80" y="136" width="170" height="650" rx="22"/><rect x="285" y="136" width="170" height="650" rx="22"/><rect x="490" y="136" width="170" height="650" rx="22"/><rect x="695" y="136" width="170" height="650" rx="22"/><rect x="900" y="136" width="170" height="650" rx="22"/><rect x="1105" y="136" width="250" height="650" rx="22"/></g>
+    <g fill="#132522" font-weight="800"><text x="165" y="178" text-anchor="middle">T0 Intake</text><text x="370" y="178" text-anchor="middle">T1 Match</text><text x="575" y="178" text-anchor="middle">T3 Transfer</text><text x="780" y="178" text-anchor="middle">T4 Observe</text><text x="985" y="178" text-anchor="middle">T5 Verify</text><text x="1230" y="178" text-anchor="middle">T6 Settlement</text></g>
+    <g stroke="#8ca9a0" stroke-width="3" stroke-dasharray="8 9"><path d="M165 205v540"/><path d="M370 205v540"/><path d="M575 205v540"/><path d="M780 205v540"/><path d="M985 205v540"/><path d="M1230 205v540"/></g>
+    <g fill="none" stroke="#1f6f60" stroke-width="5" marker-end="url(#arrow)"><path d="M165 248h205"/><path d="M370 325h205"/><path d="M575 418h205"/><path d="M780 548h205"/><path d="M985 676h245"/></g>
+    <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#1f6f60"/></marker></defs>
+    <rect x="112" y="222" width="250" height="54" rx="14" fill="#e9f6f2" stroke="#1f6f60"/><text x="132" y="255" fill="#132522" font-weight="700">PIR database creates/updates record</text>
+    <rect x="448" y="300" width="254" height="54" rx="14" fill="#fff8e8" stroke="#d39b2d"/><text x="470" y="333" fill="#132522" font-weight="700">DSRE route candidate committed</text>
+    <rect x="470" y="390" width="352" height="70" rx="16" fill="#12342f"/><text x="496" y="422" fill="#ffffff" font-weight="800">632 Physical Transfer</text><text x="496" y="446" fill="#d6fff4">GPS + biometric handoff verified</text>
+    <rect x="720" y="502" width="344" height="92" rx="16" fill="#ffffff" stroke="#d39b2d"/><text x="746" y="535" fill="#132522" font-weight="800">Observation Period</text><text x="746" y="563" fill="#52645f">Day 3 · 7 · 14 · 30 · 60 · 90</text>
+    <rect x="930" y="640" width="370" height="76" rx="16" fill="#e9f6f2" stroke="#1f6f60"/><text x="956" y="672" fill="#132522" font-weight="800">653 Update partner success rate</text><text x="956" y="699" fill="#52645f">Verified outcome feeds routing weights</text>
+    <path d="M1230 716 C1230 830 370 830 370 356" fill="none" stroke="#d39b2d" stroke-width="4" stroke-dasharray="10 8"/>
+  </g>
+</svg>

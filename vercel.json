@@ -5,5 +5,7 @@
     "silent": true
   },
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }
